@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heatmap of Audio Features</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(45deg, #2b1055, #85a5ed, #fcd34d);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: white;
+            font-family: 'Raleway', sans-serif;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            margin: 40px 0 20px;  /* Adjusted margin to add space between title and images */
+            color: #ffffff;
+        }
+        .button {
+            background-color: #ffd700;
+            color: #2b1055;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>HEATMAP FOR AUDIO FEATURES</h1>
+    {{ heatmap_div|safe }}
+    <a href="{{ url_for('top_tracks') }}" class="button">Back to Top Tracks</a>
+</body>
+</html>

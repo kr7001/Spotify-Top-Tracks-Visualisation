@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TOP 10 SPOTIFY TRACKS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(45deg, #2b1055, #85a5ed, #fcd34d);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            margin-top: 30px;
+            color: #ffffff;
+        }
+        .track-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0; /* Adjusted margin to make the list shorter */
+            width: 80%;  /* Adjust width as needed */
+            max-width: 600px;
+        }
+        .track-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .artist-name {
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+        .button {
+            background-color: #ffd700;
+            color: #2b1055;
+            padding: 8px 16px; /* Adjusted padding to make the button smaller */
+            text-decoration: none;
+            border-radius: 5px; /* Made the button rounder */
+            margin-top: 10px;
+            position: absolute;
+            left: 50%;
+            top: 95%;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+            font-weight: bold;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>TOP 10 SPOTIFY TRACKS</h1>
+    <ul class="track-list">
+        {% for track in tracks %}
+        <li class="track-item">
+            <img src="{{ track.album.images[0].url }}" alt="Album cover">
+            <div>
+                {{ track.name }} <span class="artist-name">by {{ track.artists[0].name }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('heatmap_route') }}" class="button">View Acoustic Analytics for your top 10 songs</a>
+</body>
+</html>
